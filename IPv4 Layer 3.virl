@@ -3,7 +3,7 @@
     <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="769,49">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:17:14 UTC Sat Feb 17 2018
+! Last configuration change at 19:18:19 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -142,7 +142,7 @@ end</entry>
     <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="767,169">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:17:11 UTC Sat Feb 17 2018
+! Last configuration change at 19:18:09 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -279,7 +279,7 @@ end</entry>
     <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="773,266">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:17:04 UTC Sat Feb 17 2018
+! Last configuration change at 19:17:58 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -353,6 +353,8 @@ interface GigabitEthernet0/1
 !
 interface GigabitEthernet0/2
  ip address 10.1.1.9 255.255.255.252
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 test1234
  duplex auto
  speed auto
  media-type rj45
@@ -417,7 +419,7 @@ end</entry>
     <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="787,402">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:16:35 UTC Sat Feb 17 2018
+! Last configuration change at 19:17:08 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -485,6 +487,8 @@ interface GigabitEthernet0/0
 !
 interface GigabitEthernet0/1
  ip address 10.1.1.10 255.255.255.252
+ ip ospf authentication message-digest
+ ip ospf message-digest-key 1 md5 test1234
  duplex auto
  speed auto
  media-type rj45
@@ -568,7 +572,7 @@ end</entry>
     <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="506,52">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:17:50 UTC Sat Feb 17 2018
+! Last configuration change at 19:19:10 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -697,7 +701,7 @@ end</entry>
     <node name="nx-osv-1" type="SIMPLE" subtype="NX-OSv" location="510,232">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 18:25:24 2018
+!Time: Sat Feb 17 19:32:30 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -1336,7 +1340,7 @@ router eigrp 10
     <node name="nx-osv-2" type="SIMPLE" subtype="NX-OSv" location="513,398">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 18:24:43 2018
+!Time: Sat Feb 17 19:31:12 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -2071,7 +2075,7 @@ router eigrp 10
     <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="227,217">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:17:41 UTC Sat Feb 17 2018
+! Last configuration change at 19:18:54 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2198,7 +2202,7 @@ end</entry>
     <node name="iosv-7" type="SIMPLE" subtype="IOSv" location="221,416">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:17:23 UTC Sat Feb 17 2018
+! Last configuration change at 19:18:20 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2325,7 +2329,7 @@ end</entry>
     <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="392,279">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 18:12:49 UTC Sat Feb 17 2018
+! Last configuration change at 19:10:13 UTC Sat Feb 17 2018
 !
 version 15.2
 service timestamps debug datetime msec
