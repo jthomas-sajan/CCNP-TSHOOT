@@ -1,0 +1,2497 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<topology xmlns="http://www.cisco.com/VIRL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaVersion="0.95" xsi:schemaLocation="http://www.cisco.com/VIRL https://raw.github.com/CiscoVIRL/schema/v0.95/virl.xsd">
+    <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="769,49">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 23:10:15 UTC Fri Feb 16 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.182 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.1.1.1 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 209.65.200.225 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ network 10.1.1.0 0.0.0.3 area 12
+!
+router bgp 65001
+ bgp log-neighbor-changes
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="767,169">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 23:38:40 UTC Fri Feb 16 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R2
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.183 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.1.1.2 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.1.1.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ network 10.1.1.0 0.0.0.3 area 12
+ network 10.1.1.4 0.0.0.3 area 0
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="773,266">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 23:32:24 UTC Fri Feb 16 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R3
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.1.1.6 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.1.1.9 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 1
+ network 10.1.1.4 0.0.0.3 area 0
+ network 10.1.1.8 0.0.0.3 area 34
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+    </node>
+    <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="787,402">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 23:13:16 UTC Fri Feb 16 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R4
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.185 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.1.1.10 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ ip address 10.1.4.5 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ ip address 10.1.4.9 255.255.255.252
+ duplex auto
+ speed auto
+ media-type rj45
+!
+!
+router eigrp 10
+ network 10.1.4.4 0.0.0.3
+ network 10.1.4.8 0.0.0.3
+ redistribute ospf 1 metric 100 10 255 1 1500
+!
+router ospf 1
+ redistribute eigrp 10 subnets
+ network 10.1.1.8 0.0.0.3 area 34
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+    </node>
+    <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="506,52">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 21:15:07 UTC Tue Feb 13 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname Router
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="nx-osv-1" type="SIMPLE" subtype="NX-OSv" location="510,232">
+        <extensions>
+            <entry key="config" type="String">!Command: show running-config
+!Time: Sat Feb 17 04:28:01 2018
+
+version 7.3(0)D1(1)
+power redundancy-mode redundant
+license grace-period
+
+hostname DSW1
+vdc DSW1 id 1
+  limit-resource module-type m1 m1xl m2xl f2e 
+  allocate interface Ethernet2/1-48
+  allocate interface Ethernet3/1-48
+  allocate interface Ethernet4/1-48
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 768
+  limit-resource u4route-mem minimum 96 maximum 96
+  limit-resource u6route-mem minimum 24 maximum 24
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature eigrp
+
+username admin password 5 $5$Otc7T0NC$K.ulnSZnSyXLrTGNBdtLgZJXEa8EeNx.BrdZ98XyK2C  role network-admin
+no password strength-check
+ip domain-lookup
+vlan dot1Q tag native
+system default switchport
+system jumbomtu 0
+no logging event trunk-status enable
+copp profile strict
+snmp-server user admin auth md5 0x328945d53e05e8e7207f8c20b142f0b7 priv 0x328945d53e05e8e7207f8c20b142f0b7 localizedkey engineID 128:0:0:9:3:0:0:0:0:0:0
+rmon event 1 log description FATAL(1) owner PMON@FATAL
+rmon event 2 log description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log description ERROR(3) owner PMON@ERROR
+rmon event 4 log description WARNING(4) owner PMON@WARNING
+rmon event 5 log description INFORMATION(5) owner PMON@INFO
+snmp-server enable traps link
+snmp-server enable traps link cisco-xcvr-mon-status-chg
+
+vlan 1
+
+vrf context management
+
+interface mgmt0
+  vrf member management
+
+interface Ethernet2/1
+  no switchport
+  mac-address 0000.0000.002f
+  ip address 10.1.4.6/30
+  no shutdown
+
+interface Ethernet2/2
+  no switchport
+  mac-address 0000.0000.002f
+  ip address 10.2.4.13/30
+  no shutdown
+
+interface Ethernet2/3
+  no switchport
+  mac-address 0000.0000.002f
+  ip address 10.2.1.1/30
+  no shutdown
+
+interface Ethernet2/4
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/5
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/6
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/7
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/8
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/9
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/10
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/11
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/12
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/13
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/14
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/15
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/16
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/17
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/18
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/19
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/20
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/21
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/22
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/23
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/24
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/25
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/26
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/27
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/28
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/29
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/30
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/31
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/32
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/33
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/34
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/35
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/36
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/37
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/38
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/39
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/40
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/41
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/42
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/43
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/44
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/45
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/46
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/47
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/48
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/1
+  switchport
+
+interface Ethernet3/2
+  switchport
+
+interface Ethernet3/3
+  switchport
+
+interface Ethernet3/4
+  switchport
+
+interface Ethernet3/5
+  switchport
+
+interface Ethernet3/6
+  switchport
+
+interface Ethernet3/7
+  switchport
+
+interface Ethernet3/8
+  switchport
+
+interface Ethernet3/9
+  switchport
+
+interface Ethernet3/10
+  switchport
+
+interface Ethernet3/11
+  switchport
+
+interface Ethernet3/12
+  switchport
+
+interface Ethernet3/13
+  switchport
+
+interface Ethernet3/14
+  switchport
+
+interface Ethernet3/15
+  switchport
+
+interface Ethernet3/16
+  switchport
+
+interface Ethernet3/17
+  switchport
+
+interface Ethernet3/18
+  switchport
+
+interface Ethernet3/19
+  switchport
+
+interface Ethernet3/20
+  switchport
+
+interface Ethernet3/21
+  switchport
+
+interface Ethernet3/22
+  switchport
+
+interface Ethernet3/23
+  switchport
+
+interface Ethernet3/24
+  switchport
+
+interface Ethernet3/25
+  switchport
+
+interface Ethernet3/26
+  switchport
+
+interface Ethernet3/27
+  switchport
+
+interface Ethernet3/28
+  switchport
+
+interface Ethernet3/29
+  switchport
+
+interface Ethernet3/30
+  switchport
+
+interface Ethernet3/31
+  switchport
+
+interface Ethernet3/32
+  switchport
+
+interface Ethernet3/33
+  switchport
+
+interface Ethernet3/34
+  switchport
+
+interface Ethernet3/35
+  switchport
+
+interface Ethernet3/36
+  switchport
+
+interface Ethernet3/37
+  switchport
+
+interface Ethernet3/38
+  switchport
+
+interface Ethernet3/39
+  switchport
+
+interface Ethernet3/40
+  switchport
+
+interface Ethernet3/41
+  switchport
+
+interface Ethernet3/42
+  switchport
+
+interface Ethernet3/43
+  switchport
+
+interface Ethernet3/44
+  switchport
+
+interface Ethernet3/45
+  switchport
+
+interface Ethernet3/46
+  switchport
+
+interface Ethernet3/47
+  switchport
+
+interface Ethernet3/48
+  switchport
+
+interface Ethernet4/1
+  switchport
+
+interface Ethernet4/2
+  switchport
+
+interface Ethernet4/3
+  switchport
+
+interface Ethernet4/4
+  switchport
+
+interface Ethernet4/5
+  switchport
+
+interface Ethernet4/6
+  switchport
+
+interface Ethernet4/7
+  switchport
+
+interface Ethernet4/8
+  switchport
+
+interface Ethernet4/9
+  switchport
+
+interface Ethernet4/10
+  switchport
+
+interface Ethernet4/11
+  switchport
+
+interface Ethernet4/12
+  switchport
+
+interface Ethernet4/13
+  switchport
+
+interface Ethernet4/14
+  switchport
+
+interface Ethernet4/15
+  switchport
+
+interface Ethernet4/16
+  switchport
+
+interface Ethernet4/17
+  switchport
+
+interface Ethernet4/18
+  switchport
+
+interface Ethernet4/19
+  switchport
+
+interface Ethernet4/20
+  switchport
+
+interface Ethernet4/21
+  switchport
+
+interface Ethernet4/22
+  switchport
+
+interface Ethernet4/23
+  switchport
+
+interface Ethernet4/24
+  switchport
+
+interface Ethernet4/25
+  switchport
+
+interface Ethernet4/26
+  switchport
+
+interface Ethernet4/27
+  switchport
+
+interface Ethernet4/28
+  switchport
+
+interface Ethernet4/29
+  switchport
+
+interface Ethernet4/30
+  switchport
+
+interface Ethernet4/31
+  switchport
+
+interface Ethernet4/32
+  switchport
+
+interface Ethernet4/33
+  switchport
+
+interface Ethernet4/34
+  switchport
+
+interface Ethernet4/35
+  switchport
+
+interface Ethernet4/36
+  switchport
+
+interface Ethernet4/37
+  switchport
+
+interface Ethernet4/38
+  switchport
+
+interface Ethernet4/39
+  switchport
+
+interface Ethernet4/40
+  switchport
+
+interface Ethernet4/41
+  switchport
+
+interface Ethernet4/42
+  switchport
+
+interface Ethernet4/43
+  switchport
+
+interface Ethernet4/44
+  switchport
+
+interface Ethernet4/45
+  switchport
+
+interface Ethernet4/46
+  switchport
+
+interface Ethernet4/47
+  switchport
+
+interface Ethernet4/48
+  switchport
+line console
+line vty
+boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
+boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
+router eigrp 10
+  network 10.1.4.4/30
+  network 10.2.1.0/24</entry>
+        </extensions>
+        <interface id="0" name="Ethernet2/1"/>
+        <interface id="1" name="Ethernet2/2"/>
+        <interface id="2" name="Ethernet2/3"/>
+    </node>
+    <node name="nx-osv-2" type="SIMPLE" subtype="NX-OSv" location="513,398">
+        <extensions>
+            <entry key="config" type="String">!Command: show running-config
+!Time: Sat Feb 17 04:01:15 2018
+
+version 7.3(0)D1(1)
+power redundancy-mode redundant
+license grace-period
+
+hostname DSW2
+vdc DSW2 id 1
+  limit-resource module-type m1 m1xl m2xl f2e 
+  allocate interface Ethernet2/1-48
+  allocate interface Ethernet3/1-48
+  allocate interface Ethernet4/1-48
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 768
+  limit-resource u4route-mem minimum 96 maximum 96
+  limit-resource u6route-mem minimum 24 maximum 24
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+feature eigrp
+
+username admin password 5 $5$Otc7T0NC$K.ulnSZnSyXLrTGNBdtLgZJXEa8EeNx.BrdZ98XyK2C  role network-admin
+no password strength-check
+ip domain-lookup
+vlan dot1Q tag native
+system default switchport
+system jumbomtu 0
+no logging event trunk-status enable
+copp profile strict
+snmp-server user admin auth md5 0x328945d53e05e8e7207f8c20b142f0b7 priv 0x328945d53e05e8e7207f8c20b142f0b7 localizedkey engineID 128:0:0:9:3:0:0:0:0:0:0
+rmon event 1 log description FATAL(1) owner PMON@FATAL
+rmon event 2 log description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log description ERROR(3) owner PMON@ERROR
+rmon event 4 log description WARNING(4) owner PMON@WARNING
+rmon event 5 log description INFORMATION(5) owner PMON@INFO
+snmp-server enable traps link
+snmp-server enable traps link cisco-xcvr-mon-status-chg
+
+vlan 1
+
+vrf context management
+
+interface mgmt0
+  vrf member management
+
+interface Ethernet2/1
+  no switchport
+  mac-address 0000.0000.002f
+  ip address 10.1.4.10/30
+  no shutdown
+
+interface Ethernet2/2
+  no switchport
+  mac-address 0000.0000.002f
+  ip address 10.2.4.14/30
+  no shutdown
+
+interface Ethernet2/3
+  no switchport
+  mac-address 0000.0000.002f
+  ip address 10.2.2.1/24
+  no shutdown
+
+interface Ethernet2/4
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/5
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/6
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/7
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/8
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/9
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/10
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/11
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/12
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/13
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/14
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/15
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/16
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/17
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/18
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/19
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/20
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/21
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/22
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/23
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/24
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/25
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/26
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/27
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/28
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/29
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/30
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/31
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/32
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/33
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/34
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/35
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/36
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/37
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/38
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/39
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/40
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/41
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/42
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/43
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/44
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/45
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/46
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/47
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/48
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/1
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/2
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/3
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/4
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/5
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/6
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/7
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/8
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/9
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/10
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/11
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/12
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/13
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/14
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/15
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/16
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/17
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/18
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/19
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/20
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/21
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/22
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/23
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/24
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/25
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/26
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/27
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/28
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/29
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/30
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/31
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/32
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/33
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/34
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/35
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/36
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/37
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/38
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/39
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/40
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/41
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/42
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/43
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/44
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/45
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/46
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/47
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet3/48
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/1
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/2
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/3
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/4
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/5
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/6
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/7
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/8
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/9
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/10
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/11
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/12
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/13
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/14
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/15
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/16
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/17
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/18
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/19
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/20
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/21
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/22
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/23
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/24
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/25
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/26
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/27
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/28
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/29
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/30
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/31
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/32
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/33
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/34
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/35
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/36
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/37
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/38
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/39
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/40
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/41
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/42
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/43
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/44
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/45
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/46
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/47
+  shutdown
+  no switchport
+  medium p2p
+
+interface Ethernet4/48
+  shutdown
+  no switchport
+  medium p2p
+line console
+line vty
+boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
+boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
+router eigrp 10
+  network 10.1.4.8/30
+  network 10.2.2.0/24</entry>
+        </extensions>
+        <interface id="0" name="Ethernet2/1"/>
+        <interface id="1" name="Ethernet2/2"/>
+        <interface id="2" name="Ethernet2/3"/>
+    </node>
+    <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="227,217">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 23:44:30 UTC Fri Feb 16 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname CL1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.187 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.2.1.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 10.2.1.1
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="iosv-7" type="SIMPLE" subtype="IOSv" location="221,416">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 23:56:12 UTC Fri Feb 16 2018
+!
+version 15.6
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R7
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+ethernet lmi ce
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+redundancy
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.255.0.188 255.255.0.0
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ ip address 10.2.2.2 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip route 0.0.0.0 0.0.0.0 10.2.2.1
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+no scheduler allocate
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+    </node>
+    <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="392,279">
+        <extensions>
+            <entry key="config" type="String">!
+! Last configuration change at 20:17:42 UTC Fri Feb 16 2018
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+service compress-config
+!
+hostname ASW1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport access vlan 10
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ switchport access vlan 20
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet0/3
+ switchport access vlan 20
+ media-type rj45
+ negotiation auto
+!
+interface GigabitEthernet1/0
+ switchport access vlan 10
+ media-type rj45
+ negotiation auto
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+!
+!
+control-plane
+!
+banner exec `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner incoming `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+banner login `
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************`
+!
+line con 0
+line aux 0
+line vty 0 4
+ login
+!
+!
+end</entry>
+        </extensions>
+        <interface id="0" name="GigabitEthernet0/1"/>
+        <interface id="1" name="GigabitEthernet0/2"/>
+        <interface id="2" name="GigabitEthernet0/3"/>
+        <interface id="3" name="GigabitEthernet1/0"/>
+    </node>
+    <annotations>
+        <ellipse x="662" y="5" width="316" height="443" fill="CCCCCC" stroke-width="3"/>
+        <ellipse x="439" y="170" width="367" height="278" fill="CCCCCC" stroke-width="3"/>
+        <ellipse x="699" y="267" width="185" height="114" fill="CCCCCC" stroke-width="3"/>
+        <ellipse x="679" y="47" width="185" height="103" fill="CCCCCC" stroke-width="3"/>
+        <text x="795" y="73" font-size="8">Area 12
+10.1.1.0/30</text>
+        <text x="917" y="128" font-size="18"></text>
+        <ellipse x="677" y="162" width="185" height="103" fill="CCCCCC" stroke-width="3"/>
+        <text x="793" y="188" font-size="8">Area 0
+10.1.1.4/30</text>
+        <text x="790" y="55" font-size="8">.1</text>
+        <text x="990" y="292" font-size="18"></text>
+        <text x="795" y="129" font-size="8">.2</text>
+        <text x="793" y="170" font-size="8">.5</text>
+        <text x="796" y="238" font-size="8">.6</text>
+        <text x="797" y="274" font-size="8">.9</text>
+        <text x="761" y="411" font-size="8">.9</text>
+        <text x="800" y="361" font-size="8">.10</text>
+        <text x="801" y="293" font-size="8">Area 34
+Totally NSSA
+10.1.1.8/30</text>
+        <text x="745" y="379" font-size="8">.5</text>
+        <text x="595" y="410" font-size="8">10.1.4.8/30</text>
+        <text x="625" y="288" font-size="8">10.1.4.4/30</text>
+        <text x="542" y="195" font-size="10" bold="true">EIGRP 10</text>
+        <text x="878" y="197" font-size="10" bold="true">OSPF 1</text>
+        <text x="450" y="285" font-size="8">10.2.4.12/30</text>
+        <text x="282" y="204" font-size="8">10.2.1.0/24</text>
+        <text x="278" y="383" font-size="8">10.2.2.0/24</text>
+        <text x="206" y="169" font-size="8">VLAN 10</text>
+        <text x="200" y="444" font-size="8">VLAN 20</text>
+        <text x="598" y="6" font-size="10" bold="true">BGP 65001</text>
+        <text x="598" y="27" font-size="8">209.65.200.224/30</text>
+        <text x="661" y="52" font-size="8">.225</text>
+        <text x="527" y="55" font-size="8">.226</text>
+        <text x="28" y="15" font-size="18">IPv4 Layer 3 Topology</text>
+    </annotations>
+    <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[1]" src="/virl:topology/virl:node[3]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[5]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[2]" src="/virl:topology/virl:node[6]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[4]/virl:interface[3]" src="/virl:topology/virl:node[7]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[2]" src="/virl:topology/virl:node[6]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[6]/virl:interface[3]" src="/virl:topology/virl:node[10]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[7]/virl:interface[3]" src="/virl:topology/virl:node[10]/virl:interface[2]"/>
+    <connection dst="/virl:topology/virl:node[10]/virl:interface[3]" src="/virl:topology/virl:node[9]/virl:interface[1]"/>
+    <connection dst="/virl:topology/virl:node[8]/virl:interface[1]" src="/virl:topology/virl:node[10]/virl:interface[4]"/>
+</topology>
