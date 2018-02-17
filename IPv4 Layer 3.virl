@@ -3,7 +3,7 @@
     <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="769,49">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:54:34 UTC Sat Feb 17 2018
+! Last configuration change at 20:41:03 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -66,7 +66,7 @@ interface Loopback1
  ip address 7.7.7.7 255.255.255.255
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.215 255.255.0.0
+ ip address 10.255.0.226 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -74,18 +74,23 @@ interface GigabitEthernet0/0
 !
 interface GigabitEthernet0/1
  ip address 10.1.1.1 255.255.255.252
+ ip nat inside
+ ip virtual-reassembly in
  duplex auto
  speed auto
  media-type rj45
 !
 interface GigabitEthernet0/2
  ip address 209.65.200.225 255.255.255.252
+ ip nat outside
+ ip virtual-reassembly in
  duplex auto
  speed auto
  media-type rj45
 !
 router ospf 1
  network 10.1.1.0 0.0.0.3 area 12
+ default-information originate always
 !
 router bgp 65001
  bgp log-neighbor-changes
@@ -100,7 +105,12 @@ ip forward-protocol nd
 !
 no ip http server
 no ip http secure-server
+ip nat inside source list NAT_OUTSIDE interface GigabitEthernet0/2 overload
 ip route 8.8.8.8 255.255.255.255 209.65.200.226
+!
+ip access-list standard NAT_OUTSIDE
+ permit 10.2.1.0 0.0.0.255
+ permit 10.2.2.0 0.0.0.255
 !
 !
 !
@@ -151,7 +161,7 @@ end</entry>
     <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="767,169">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:54:25 UTC Sat Feb 17 2018
+! Last configuration change at 20:41:45 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -211,7 +221,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.216 255.255.0.0
+ ip address 10.255.0.227 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -288,7 +298,7 @@ end</entry>
     <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="773,266">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:54:14 UTC Sat Feb 17 2018
+! Last configuration change at 20:41:45 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -348,7 +358,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.217 255.255.0.0
+ ip address 10.255.0.228 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -428,7 +438,7 @@ end</entry>
     <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="787,402">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:53:09 UTC Sat Feb 17 2018
+! Last configuration change at 20:41:43 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -488,7 +498,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.218 255.255.0.0
+ ip address 10.255.0.229 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -581,7 +591,7 @@ end</entry>
     <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="506,52">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:55:31 UTC Sat Feb 17 2018
+! Last configuration change at 20:42:08 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -644,7 +654,7 @@ interface Loopback1
  ip address 8.8.8.8 255.255.255.255
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.219 255.255.0.0
+ ip address 10.255.0.230 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -718,7 +728,7 @@ end</entry>
     <node name="nx-osv-1" type="SIMPLE" subtype="NX-OSv" location="510,232">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 20:12:21 2018
+!Time: Sat Feb 17 20:44:16 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -1009,195 +1019,147 @@ interface Ethernet2/48
 
 interface Ethernet3/1
   switchport
-  no shutdown
 
 interface Ethernet3/2
   switchport
-  no shutdown
 
 interface Ethernet3/3
   switchport
-  no shutdown
 
 interface Ethernet3/4
   switchport
-  no shutdown
 
 interface Ethernet3/5
   switchport
-  no shutdown
 
 interface Ethernet3/6
   switchport
-  no shutdown
 
 interface Ethernet3/7
   switchport
-  no shutdown
 
 interface Ethernet3/8
   switchport
-  no shutdown
 
 interface Ethernet3/9
   switchport
-  no shutdown
 
 interface Ethernet3/10
   switchport
-  no shutdown
 
 interface Ethernet3/11
   switchport
-  no shutdown
 
 interface Ethernet3/12
   switchport
-  no shutdown
 
 interface Ethernet3/13
   switchport
-  no shutdown
 
 interface Ethernet3/14
   switchport
-  no shutdown
 
 interface Ethernet3/15
   switchport
-  no shutdown
 
 interface Ethernet3/16
   switchport
-  no shutdown
 
 interface Ethernet3/17
   switchport
-  no shutdown
 
 interface Ethernet3/18
   switchport
-  no shutdown
 
 interface Ethernet3/19
   switchport
-  no shutdown
 
 interface Ethernet3/20
   switchport
-  no shutdown
 
 interface Ethernet3/21
   switchport
-  no shutdown
 
 interface Ethernet3/22
   switchport
-  no shutdown
 
 interface Ethernet3/23
   switchport
-  no shutdown
 
 interface Ethernet3/24
   switchport
-  no shutdown
 
 interface Ethernet3/25
   switchport
-  no shutdown
 
 interface Ethernet3/26
   switchport
-  no shutdown
 
 interface Ethernet3/27
   switchport
-  no shutdown
 
 interface Ethernet3/28
   switchport
-  no shutdown
 
 interface Ethernet3/29
   switchport
-  no shutdown
 
 interface Ethernet3/30
   switchport
-  no shutdown
 
 interface Ethernet3/31
   switchport
-  no shutdown
 
 interface Ethernet3/32
   switchport
-  no shutdown
 
 interface Ethernet3/33
   switchport
-  no shutdown
 
 interface Ethernet3/34
   switchport
-  no shutdown
 
 interface Ethernet3/35
   switchport
-  no shutdown
 
 interface Ethernet3/36
   switchport
-  no shutdown
 
 interface Ethernet3/37
   switchport
-  no shutdown
 
 interface Ethernet3/38
   switchport
-  no shutdown
 
 interface Ethernet3/39
   switchport
-  no shutdown
 
 interface Ethernet3/40
   switchport
-  no shutdown
 
 interface Ethernet3/41
   switchport
-  no shutdown
 
 interface Ethernet3/42
   switchport
-  no shutdown
 
 interface Ethernet3/43
   switchport
-  no shutdown
 
 interface Ethernet3/44
   switchport
-  no shutdown
 
 interface Ethernet3/45
   switchport
-  no shutdown
 
 interface Ethernet3/46
   switchport
-  no shutdown
 
 interface Ethernet3/47
   switchport
-  no shutdown
 
 interface Ethernet3/48
   switchport
-  no shutdown
 
 interface Ethernet4/1
   switchport
@@ -1347,8 +1309,7 @@ line vty
 boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
 boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
 router eigrp 10
-  network 0.0.0.0/0
-  network 10.2.1.0/24</entry>
+  network 0.0.0.0/0</entry>
         </extensions>
         <interface id="0" name="Ethernet2/1"/>
         <interface id="1" name="Ethernet2/2"/>
@@ -1357,7 +1318,7 @@ router eigrp 10
     <node name="nx-osv-2" type="SIMPLE" subtype="NX-OSv" location="513,398">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 20:10:42 2018
+!Time: Sat Feb 17 20:45:10 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -2082,8 +2043,7 @@ line vty
 boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
 boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
 router eigrp 10
-  network 0.0.0.0/0
-  network 10.2.2.0/24</entry>
+  network 0.0.0.0/0</entry>
         </extensions>
         <interface id="0" name="Ethernet2/1"/>
         <interface id="1" name="Ethernet2/2"/>
@@ -2092,7 +2052,7 @@ router eigrp 10
     <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="227,217">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:55:19 UTC Sat Feb 17 2018
+! Last configuration change at 20:42:19 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2152,7 +2112,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.220 255.255.0.0
+ ip address 10.255.0.231 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -2219,7 +2179,7 @@ end</entry>
     <node name="iosv-7" type="SIMPLE" subtype="IOSv" location="221,416">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:54:34 UTC Sat Feb 17 2018
+! Last configuration change at 20:42:20 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2279,7 +2239,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.221 255.255.0.0
+ ip address 10.255.0.232 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -2346,7 +2306,7 @@ end</entry>
     <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="392,279">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:44:23 UTC Sat Feb 17 2018
+! Last configuration change at 20:40:43 UTC Sat Feb 17 2018
 !
 version 15.2
 service timestamps debug datetime msec
