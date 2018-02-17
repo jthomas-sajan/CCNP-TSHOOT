@@ -3,7 +3,7 @@
     <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="769,49">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 23:10:15 UTC Fri Feb 16 2018
+! Last configuration change at 16:05:00 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -63,7 +63,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.182 255.255.0.0
+ ip address 10.255.0.204 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -142,7 +142,7 @@ end</entry>
     <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="767,169">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 23:38:40 UTC Fri Feb 16 2018
+! Last configuration change at 16:05:09 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -202,7 +202,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.183 255.255.0.0
+ ip address 10.255.0.205 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -279,7 +279,7 @@ end</entry>
     <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="773,266">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 23:32:24 UTC Fri Feb 16 2018
+! Last configuration change at 16:05:13 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -339,7 +339,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- no ip address
+ ip address 10.255.0.206 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -416,7 +416,7 @@ end</entry>
     <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="787,402">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 23:13:16 UTC Fri Feb 16 2018
+! Last configuration change at 16:05:08 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -476,7 +476,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.185 255.255.0.0
+ ip address 10.255.0.207 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -566,14 +566,14 @@ end</entry>
     <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="506,52">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 21:15:07 UTC Tue Feb 13 2018
+! Last configuration change at 16:05:23 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname Router
+hostname R5
 !
 boot-start-marker
 boot-end-marker
@@ -625,16 +625,18 @@ redundancy
 !
 !
 !
+interface Loopback1
+ ip address 8.8.8.8 255.255.255.255
+!
 interface GigabitEthernet0/0
- no ip address
+ ip address 10.255.0.208 255.255.0.0
  shutdown
  duplex auto
  speed auto
  media-type rj45
 !
 interface GigabitEthernet0/1
- no ip address
- shutdown
+ ip address 209.65.200.226 255.255.255.252
  duplex auto
  speed auto
  media-type rj45
@@ -693,7 +695,7 @@ end</entry>
     <node name="nx-osv-1" type="SIMPLE" subtype="NX-OSv" location="510,232">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 04:28:01 2018
+!Time: Sat Feb 17 16:07:05 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -984,147 +986,195 @@ interface Ethernet2/48
 
 interface Ethernet3/1
   switchport
+  no shutdown
 
 interface Ethernet3/2
   switchport
+  no shutdown
 
 interface Ethernet3/3
   switchport
+  no shutdown
 
 interface Ethernet3/4
   switchport
+  no shutdown
 
 interface Ethernet3/5
   switchport
+  no shutdown
 
 interface Ethernet3/6
   switchport
+  no shutdown
 
 interface Ethernet3/7
   switchport
+  no shutdown
 
 interface Ethernet3/8
   switchport
+  no shutdown
 
 interface Ethernet3/9
   switchport
+  no shutdown
 
 interface Ethernet3/10
   switchport
+  no shutdown
 
 interface Ethernet3/11
   switchport
+  no shutdown
 
 interface Ethernet3/12
   switchport
+  no shutdown
 
 interface Ethernet3/13
   switchport
+  no shutdown
 
 interface Ethernet3/14
   switchport
+  no shutdown
 
 interface Ethernet3/15
   switchport
+  no shutdown
 
 interface Ethernet3/16
   switchport
+  no shutdown
 
 interface Ethernet3/17
   switchport
+  no shutdown
 
 interface Ethernet3/18
   switchport
+  no shutdown
 
 interface Ethernet3/19
   switchport
+  no shutdown
 
 interface Ethernet3/20
   switchport
+  no shutdown
 
 interface Ethernet3/21
   switchport
+  no shutdown
 
 interface Ethernet3/22
   switchport
+  no shutdown
 
 interface Ethernet3/23
   switchport
+  no shutdown
 
 interface Ethernet3/24
   switchport
+  no shutdown
 
 interface Ethernet3/25
   switchport
+  no shutdown
 
 interface Ethernet3/26
   switchport
+  no shutdown
 
 interface Ethernet3/27
   switchport
+  no shutdown
 
 interface Ethernet3/28
   switchport
+  no shutdown
 
 interface Ethernet3/29
   switchport
+  no shutdown
 
 interface Ethernet3/30
   switchport
+  no shutdown
 
 interface Ethernet3/31
   switchport
+  no shutdown
 
 interface Ethernet3/32
   switchport
+  no shutdown
 
 interface Ethernet3/33
   switchport
+  no shutdown
 
 interface Ethernet3/34
   switchport
+  no shutdown
 
 interface Ethernet3/35
   switchport
+  no shutdown
 
 interface Ethernet3/36
   switchport
+  no shutdown
 
 interface Ethernet3/37
   switchport
+  no shutdown
 
 interface Ethernet3/38
   switchport
+  no shutdown
 
 interface Ethernet3/39
   switchport
+  no shutdown
 
 interface Ethernet3/40
   switchport
+  no shutdown
 
 interface Ethernet3/41
   switchport
+  no shutdown
 
 interface Ethernet3/42
   switchport
+  no shutdown
 
 interface Ethernet3/43
   switchport
+  no shutdown
 
 interface Ethernet3/44
   switchport
+  no shutdown
 
 interface Ethernet3/45
   switchport
+  no shutdown
 
 interface Ethernet3/46
   switchport
+  no shutdown
 
 interface Ethernet3/47
   switchport
+  no shutdown
 
 interface Ethernet3/48
   switchport
+  no shutdown
 
 interface Ethernet4/1
   switchport
@@ -1274,8 +1324,7 @@ line vty
 boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
 boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
 router eigrp 10
-  network 10.1.4.4/30
-  network 10.2.1.0/24</entry>
+  network 10.1.4.4/30</entry>
         </extensions>
         <interface id="0" name="Ethernet2/1"/>
         <interface id="1" name="Ethernet2/2"/>
@@ -1284,7 +1333,7 @@ router eigrp 10
     <node name="nx-osv-2" type="SIMPLE" subtype="NX-OSv" location="513,398">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 04:01:15 2018
+!Time: Sat Feb 17 16:06:44 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -1814,251 +1863,202 @@ interface Ethernet3/48
   medium p2p
 
 interface Ethernet4/1
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/2
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/3
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/4
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/5
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/6
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/7
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/8
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/9
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/10
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/11
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/12
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/13
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/14
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/15
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/16
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/17
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/18
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/19
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/20
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/21
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/22
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/23
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/24
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/25
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/26
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/27
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/28
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/29
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/30
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/31
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/32
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/33
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/34
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/35
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/36
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/37
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/38
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/39
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/40
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/41
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/42
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/43
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/44
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/45
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/46
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/47
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 
 interface Ethernet4/48
-  shutdown
-  no switchport
-  medium p2p
+  switchport
+  no shutdown
 line console
 line vty
 boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
 boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
 router eigrp 10
-  network 10.1.4.8/30
-  network 10.2.2.0/24</entry>
+  network 10.1.4.8/30</entry>
         </extensions>
         <interface id="0" name="Ethernet2/1"/>
         <interface id="1" name="Ethernet2/2"/>
@@ -2067,14 +2067,14 @@ router eigrp 10
     <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="227,217">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 23:44:30 UTC Fri Feb 16 2018
+! Last configuration change at 16:05:33 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname CL1
+hostname R6
 !
 boot-start-marker
 boot-end-marker
@@ -2127,7 +2127,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.187 255.255.0.0
+ ip address 10.255.0.209 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -2194,7 +2194,7 @@ end</entry>
     <node name="iosv-7" type="SIMPLE" subtype="IOSv" location="221,416">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 23:56:12 UTC Fri Feb 16 2018
+! Last configuration change at 16:05:33 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2254,7 +2254,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.188 255.255.0.0
+ ip address 10.255.0.210 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -2321,7 +2321,7 @@ end</entry>
     <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="392,279">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:17:42 UTC Fri Feb 16 2018
+! Last configuration change at 16:04:40 UTC Sat Feb 17 2018
 !
 version 15.2
 service timestamps debug datetime msec
@@ -2456,14 +2456,14 @@ end</entry>
         <ellipse x="677" y="162" width="185" height="103" fill="CCCCCC" stroke-width="3"/>
         <text x="793" y="188" font-size="8">Area 0
 10.1.1.4/30</text>
-        <text x="790" y="55" font-size="8">.1</text>
+        <text x="778" y="67" font-size="8">.1</text>
         <text x="990" y="292" font-size="18"></text>
-        <text x="795" y="129" font-size="8">.2</text>
-        <text x="793" y="170" font-size="8">.5</text>
-        <text x="796" y="238" font-size="8">.6</text>
-        <text x="797" y="274" font-size="8">.9</text>
+        <text x="751" y="129" font-size="8">.2</text>
+        <text x="775" y="186" font-size="8">.5</text>
+        <text x="752" y="231" font-size="8">.6</text>
+        <text x="781" y="285" font-size="8">.9</text>
         <text x="761" y="411" font-size="8">.9</text>
-        <text x="800" y="361" font-size="8">.10</text>
+        <text x="770" y="362" font-size="8">.10</text>
         <text x="801" y="293" font-size="8">Area 34
 Totally NSSA
 10.1.1.8/30</text>
@@ -2473,15 +2473,25 @@ Totally NSSA
         <text x="542" y="195" font-size="10" bold="true">EIGRP 10</text>
         <text x="878" y="197" font-size="10" bold="true">OSPF 1</text>
         <text x="450" y="285" font-size="8">10.2.4.12/30</text>
-        <text x="282" y="204" font-size="8">10.2.1.0/24</text>
-        <text x="278" y="383" font-size="8">10.2.2.0/24</text>
-        <text x="206" y="169" font-size="8">VLAN 10</text>
-        <text x="200" y="444" font-size="8">VLAN 20</text>
+        <text x="355" y="199" font-size="8">10.2.1.0/24</text>
+        <text x="347" y="391" font-size="8">10.2.2.0/24</text>
+        <text x="206" y="169" font-size="8" bold="true">VLAN 10</text>
+        <text x="200" y="444" font-size="8" bold="true">VLAN 20</text>
         <text x="598" y="6" font-size="10" bold="true">BGP 65001</text>
         <text x="598" y="27" font-size="8">209.65.200.224/30</text>
-        <text x="661" y="52" font-size="8">.225</text>
-        <text x="527" y="55" font-size="8">.226</text>
+        <text x="732" y="64" font-size="8">.225</text>
+        <text x="520" y="23" font-size="8">.226</text>
         <text x="28" y="15" font-size="18">IPv4 Layer 3 Topology</text>
+        <text x="532" y="379" font-size="8">.10</text>
+        <text x="527" y="223" font-size="8">.6&#xD;
+</text>
+        <text x="248" y="201" font-size="8">.2</text>
+        <text x="233" y="377" font-size="8">.2</text>
+        <text x="478" y="255" font-size="8">.1</text>
+        <text x="471" y="401" font-size="8">.1</text>
+        <text x="514" y="259" font-size="8">.13</text>
+        <text x="491" y="357" font-size="8">.14</text>
+        <text x="414" y="9" font-size="8">Loopback1 8.8.8.8</text>
     </annotations>
     <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
     <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
