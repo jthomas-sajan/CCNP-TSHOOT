@@ -3,7 +3,7 @@
     <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="769,49">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:18:19 UTC Sat Feb 17 2018
+! Last configuration change at 19:54:34 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -62,6 +62,9 @@ redundancy
 !
 !
 !
+interface Loopback1
+ ip address 7.7.7.7 255.255.255.255
+!
 interface GigabitEthernet0/0
  ip address 10.255.0.215 255.255.0.0
  shutdown
@@ -86,12 +89,18 @@ router ospf 1
 !
 router bgp 65001
  bgp log-neighbor-changes
+ network 10.1.1.0 mask 255.255.255.252
+ neighbor 8.8.8.8 remote-as 65002
+ neighbor 8.8.8.8 ebgp-multihop 2
+ neighbor 8.8.8.8 update-source Loopback1
+ neighbor 8.8.8.8 next-hop-self
 !
 ip forward-protocol nd
 !
 !
 no ip http server
 no ip http secure-server
+ip route 8.8.8.8 255.255.255.255 209.65.200.226
 !
 !
 !
@@ -142,7 +151,7 @@ end</entry>
     <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="767,169">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:18:09 UTC Sat Feb 17 2018
+! Last configuration change at 19:54:25 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -279,7 +288,7 @@ end</entry>
     <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="773,266">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:17:58 UTC Sat Feb 17 2018
+! Last configuration change at 19:54:14 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -419,7 +428,7 @@ end</entry>
     <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="787,402">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:17:08 UTC Sat Feb 17 2018
+! Last configuration change at 19:53:09 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -572,7 +581,7 @@ end</entry>
     <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="506,52">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:19:10 UTC Sat Feb 17 2018
+! Last configuration change at 19:55:31 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -647,11 +656,19 @@ interface GigabitEthernet0/1
  speed auto
  media-type rj45
 !
+router bgp 65002
+ bgp log-neighbor-changes
+ neighbor 7.7.7.7 remote-as 65001
+ neighbor 7.7.7.7 ebgp-multihop 2
+ neighbor 7.7.7.7 update-source Loopback1
+ neighbor 7.7.7.7 next-hop-self
+!
 ip forward-protocol nd
 !
 !
 no ip http server
 no ip http secure-server
+ip route 7.7.7.7 255.255.255.255 209.65.200.225
 !
 !
 !
@@ -701,7 +718,7 @@ end</entry>
     <node name="nx-osv-1" type="SIMPLE" subtype="NX-OSv" location="510,232">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 19:32:30 2018
+!Time: Sat Feb 17 20:12:21 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -1340,7 +1357,7 @@ router eigrp 10
     <node name="nx-osv-2" type="SIMPLE" subtype="NX-OSv" location="513,398">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 19:31:12 2018
+!Time: Sat Feb 17 20:10:42 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -2075,7 +2092,7 @@ router eigrp 10
     <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="227,217">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:18:54 UTC Sat Feb 17 2018
+! Last configuration change at 19:55:19 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2202,7 +2219,7 @@ end</entry>
     <node name="iosv-7" type="SIMPLE" subtype="IOSv" location="221,416">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:18:20 UTC Sat Feb 17 2018
+! Last configuration change at 19:54:34 UTC Sat Feb 17 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2329,7 +2346,7 @@ end</entry>
     <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="392,279">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 19:10:13 UTC Sat Feb 17 2018
+! Last configuration change at 19:44:23 UTC Sat Feb 17 2018
 !
 version 15.2
 service timestamps debug datetime msec
@@ -2485,7 +2502,7 @@ Totally NSSA
         <text x="347" y="391" font-size="8">10.2.2.0/24</text>
         <text x="206" y="169" font-size="8" bold="true">VLAN 10</text>
         <text x="200" y="444" font-size="8" bold="true">VLAN 20</text>
-        <text x="598" y="6" font-size="10" bold="true">BGP 65001</text>
+        <text x="440" y="6" font-size="10" bold="true">BGP 65002</text>
         <text x="598" y="27" font-size="8">209.65.200.224/30</text>
         <text x="732" y="64" font-size="8">.225</text>
         <text x="520" y="23" font-size="8">.226</text>
@@ -2499,7 +2516,9 @@ Totally NSSA
         <text x="471" y="401" font-size="8">.1</text>
         <text x="514" y="259" font-size="8">.13</text>
         <text x="491" y="357" font-size="8">.14</text>
-        <text x="414" y="9" font-size="8">Loopback1 8.8.8.8</text>
+        <text x="396" y="32" font-size="8">Loopback1 8.8.8.8</text>
+        <text x="685" y="9" font-size="10" bold="true">BGP 65001</text>
+        <text x="803" y="30" font-size="8">Loopback1 7.7.7.7</text>
     </annotations>
     <connection dst="/virl:topology/virl:node[2]/virl:interface[1]" src="/virl:topology/virl:node[1]/virl:interface[1]"/>
     <connection dst="/virl:topology/virl:node[3]/virl:interface[1]" src="/virl:topology/virl:node[2]/virl:interface[2]"/>
