@@ -3,7 +3,7 @@
     <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="368,62">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 22:36:57 UTC Mon Feb 19 2018
+! Last configuration change at 16:46:26 UTC Wed Feb 21 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -136,7 +136,7 @@ end</entry>
     <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="365,172">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 22:37:21 UTC Mon Feb 19 2018
+! Last configuration change at 16:50:15 UTC Wed Feb 21 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -277,7 +277,7 @@ end</entry>
     <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="364,281">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 22:36:36 UTC Mon Feb 19 2018
+! Last configuration change at 16:41:30 UTC Wed Feb 21 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -425,7 +425,7 @@ end</entry>
     <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="366,393">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 22:36:45 UTC Mon Feb 19 2018
+! Last configuration change at 16:40:52 UTC Wed Feb 21 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -528,11 +528,19 @@ no ip http secure-server
 !
 ipv6 router ospf 6
  router-id 0.0.0.4
+ redistribute rip RIP_ZONE include-connected
 !
 ipv6 router rip RIP_ZONE
+ redistribute ospf 6 metric 2 include-connected
+!
+!
+route-map RED-OSPF permit 1
+ match ipv6 address OSPF6
 !
 !
 !
+ipv6 access-list OSPF6
+ permit ipv6 any 2026::/122
 !
 control-plane
 !
@@ -580,7 +588,7 @@ end</entry>
     <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="93,231">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 22:37:20 UTC Mon Feb 19 2018
+! Last configuration change at 16:49:19 UTC Wed Feb 21 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -724,7 +732,7 @@ end</entry>
     <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="66,364">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 22:37:19 UTC Mon Feb 19 2018
+! Last configuration change at 16:48:28 UTC Wed Feb 21 2018
 !
 version 15.6
 service timestamps debug datetime msec
