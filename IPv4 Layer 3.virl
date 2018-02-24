@@ -3,7 +3,7 @@
     <node name="iosv-1" type="SIMPLE" subtype="IOSv" location="769,49">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:41:03 UTC Sat Feb 17 2018
+! Last configuration change at 21:59:06 UTC Fri Feb 23 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -66,7 +66,7 @@ interface Loopback1
  ip address 7.7.7.7 255.255.255.255
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.226 255.255.0.0
+ ip address 10.255.1.2 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -161,7 +161,7 @@ end</entry>
     <node name="iosv-2" type="SIMPLE" subtype="IOSv" location="767,169">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:41:45 UTC Sat Feb 17 2018
+! Last configuration change at 00:22:19 UTC Sat Feb 24 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -221,7 +221,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.227 255.255.0.0
+ ip address 10.255.1.3 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -298,7 +298,7 @@ end</entry>
     <node name="iosv-3" type="SIMPLE" subtype="IOSv" location="773,266">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:41:45 UTC Sat Feb 17 2018
+! Last configuration change at 00:23:48 UTC Sat Feb 24 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -358,7 +358,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.228 255.255.0.0
+ ip address 10.255.1.4 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -379,7 +379,6 @@ interface GigabitEthernet0/2
  media-type rj45
 !
 router ospf 1
- area 34 nssa default-information-originate no-summary
  network 10.1.1.4 0.0.0.3 area 0
  network 10.1.1.8 0.0.0.3 area 34
 !
@@ -438,7 +437,7 @@ end</entry>
     <node name="iosv-4" type="SIMPLE" subtype="IOSv" location="787,402">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:41:43 UTC Sat Feb 17 2018
+! Last configuration change at 00:19:51 UTC Sat Feb 24 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -469,6 +468,11 @@ mmi snmp-timeout 180
 !
 !
 !
+ip dhcp excluded-address 10.2.1.1
+!
+ip dhcp pool VLAN10
+ network 10.2.1.0 255.255.255.0
+ default-router 10.2.1.1 
 !
 !
 !
@@ -498,7 +502,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.229 255.255.0.0
+ ip address 10.255.1.5 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -528,11 +532,10 @@ interface GigabitEthernet0/3
 router eigrp 10
  network 10.1.4.4 0.0.0.3
  network 10.1.4.8 0.0.0.3
- redistribute ospf 1 metric 100 10 255 1 1500
+ redistribute ospf 1 route-map redis-ospf
 !
 router ospf 1
- area 34 nssa
- redistribute eigrp 10 subnets
+ redistribute eigrp 10 metric 10 subnets
  network 10.1.1.8 0.0.0.3 area 34
 !
 ip forward-protocol nd
@@ -542,7 +545,19 @@ no ip http server
 no ip http secure-server
 !
 !
+route-map redis-ospf permit 10
+ match ip address 11 10 12
+ set metric 1000 10 255 1 1550
 !
+route-map redis-ospf permit 20
+ match ip address 1
+ set metric 1000 10 255 1 1550
+!
+!
+access-list 1 permit 0.0.0.0
+access-list 10 permit 10.1.1.0 0.0.0.3
+access-list 11 permit 10.1.1.4 0.0.0.3
+access-list 12 permit 10.1.1.8 0.0.0.3
 !
 control-plane
 !
@@ -591,7 +606,7 @@ end</entry>
     <node name="iosv-5" type="SIMPLE" subtype="IOSv" location="506,52">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:42:08 UTC Sat Feb 17 2018
+! Last configuration change at 00:38:39 UTC Sat Feb 24 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -654,7 +669,7 @@ interface Loopback1
  ip address 8.8.8.8 255.255.255.255
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.230 255.255.0.0
+ ip address 10.255.1.6 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -728,7 +743,7 @@ end</entry>
     <node name="nx-osv-1" type="SIMPLE" subtype="NX-OSv" location="510,232">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 20:44:16 2018
+!Time: Sat Feb 24 07:24:55 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -749,6 +764,7 @@ vdc DSW1 id 1
   limit-resource m6route-mem minimum 8 maximum 8
 
 feature eigrp
+feature dhcp
 
 username admin password 5 $5$Otc7T0NC$K.ulnSZnSyXLrTGNBdtLgZJXEa8EeNx.BrdZ98XyK2C  role network-admin
 no password strength-check
@@ -757,6 +773,12 @@ vlan dot1Q tag native
 system default switchport
 system jumbomtu 0
 no logging event trunk-status enable
+ip access-list 10
+  10 permit ip 10.2.1.0 255.255.255.0 any 
+vlan access-map vlan10 10
+        match ip address 10
+        action drop
+vlan filter vlan10 vlan-list 10
 copp profile strict
 snmp-server user admin auth md5 0x328945d53e05e8e7207f8c20b142f0b7 priv 0x328945d53e05e8e7207f8c20b142f0b7 localizedkey engineID 128:0:0:9:3:0:0:0:0:0:0
 rmon event 1 log description FATAL(1) owner PMON@FATAL
@@ -769,7 +791,15 @@ snmp-server enable traps link cisco-xcvr-mon-status-chg
 
 vlan 1
 
+route-map redis-ospf permit 10
+  match ip address 1 
+route-map redis-ospf permit 20
+  match ip address 2 
+service dhcp
+ip dhcp relay
+ipv6 dhcp relay
 vrf context management
+
 
 interface mgmt0
   vrf member management
@@ -778,6 +808,7 @@ interface Ethernet2/1
   no switchport
   mac-address 0000.0000.002f
   ip address 10.1.4.6/30
+  no ip passive-interface eigrp 10
   no shutdown
 
 interface Ethernet2/2
@@ -790,7 +821,9 @@ interface Ethernet2/3
   no switchport
   mac-address 0000.0000.002f
   ip address 10.2.1.1/30
+  no ip passive-interface eigrp 10
   no shutdown
+  ip dhcp relay address 10.1.4.5 
 
 interface Ethernet2/4
   shutdown
@@ -1309,7 +1342,9 @@ line vty
 boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
 boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
 router eigrp 10
-  network 0.0.0.0/0</entry>
+  passive-interface default
+  network 10.1.4.4/30
+  network 10.2.1.0/24</entry>
         </extensions>
         <interface id="0" name="Ethernet2/1"/>
         <interface id="1" name="Ethernet2/2"/>
@@ -1318,7 +1353,7 @@ router eigrp 10
     <node name="nx-osv-2" type="SIMPLE" subtype="NX-OSv" location="513,398">
         <extensions>
             <entry key="config" type="String">!Command: show running-config
-!Time: Sat Feb 17 20:45:10 2018
+!Time: Sat Feb 24 04:08:56 2018
 
 version 7.3(0)D1(1)
 power redundancy-mode redundant
@@ -2042,8 +2077,7 @@ line console
 line vty
 boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
 boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
-router eigrp 10
-  network 0.0.0.0/0</entry>
+router eigrp 10</entry>
         </extensions>
         <interface id="0" name="Ethernet2/1"/>
         <interface id="1" name="Ethernet2/2"/>
@@ -2052,7 +2086,7 @@ router eigrp 10
     <node name="iosv-6" type="SIMPLE" subtype="IOSv" location="227,217">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:42:19 UTC Sat Feb 17 2018
+! Last configuration change at 00:35:03 UTC Sat Feb 24 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2112,24 +2146,27 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.231 255.255.0.0
+ ip address 10.255.1.7 255.255.0.0
  shutdown
  duplex auto
  speed auto
  media-type rj45
 !
 interface GigabitEthernet0/1
- ip address 10.2.1.2 255.255.255.0
+ ip address dhcp
  duplex auto
  speed auto
  media-type rj45
+!
+!
+router eigrp 10
+ network 0.0.0.0
 !
 ip forward-protocol nd
 !
 !
 no ip http server
 no ip http secure-server
-ip route 0.0.0.0 0.0.0.0 10.2.1.1
 !
 !
 !
@@ -2179,7 +2216,7 @@ end</entry>
     <node name="iosv-7" type="SIMPLE" subtype="IOSv" location="221,416">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:42:20 UTC Sat Feb 17 2018
+! Last configuration change at 00:37:15 UTC Sat Feb 24 2018
 !
 version 15.6
 service timestamps debug datetime msec
@@ -2239,7 +2276,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- ip address 10.255.0.232 255.255.0.0
+ ip address 10.255.1.8 255.255.0.0
  shutdown
  duplex auto
  speed auto
@@ -2306,7 +2343,7 @@ end</entry>
     <node name="iosvl2-1" type="SIMPLE" subtype="IOSvL2" location="392,279">
         <extensions>
             <entry key="config" type="String">!
-! Last configuration change at 20:40:43 UTC Sat Feb 17 2018
+! Last configuration change at 21:16:10 UTC Fri Feb 23 2018
 !
 version 15.2
 service timestamps debug datetime msec
